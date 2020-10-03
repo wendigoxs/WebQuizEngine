@@ -1,0 +1,29 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.2.RELEASE'
+    id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+sourceCompatibility = 11
+
+repositories {
+    mavenCentral()
+    maven { url "https://jitpack.io" }
+}
+
+sourceSets.test.java.srcDirs = ['test/tests']
+
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    compile("org.springframework.boot:spring-boot-starter-web")
+    runtimeOnly 'com.h2database:h2'
+
+    testCompile 'com.google.code.gson:gson:2.8.5'
+    testCompile 'org.apache.httpcomponents:httpclient:4.5.9'
+    testImplementation 'com.github.hyperskill:hs-test:release-SNAPSHOT'
+}
